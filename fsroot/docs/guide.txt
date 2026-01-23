@@ -1,0 +1,2 @@
+Welcome to os.
+This is a tiny custom OS with a simple filesystem.
