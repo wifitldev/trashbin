@@ -25,28 +25,9 @@ $(BOOT)/stage2.bin: boot/stage2.asm | $(BUILD)
 
 KERNEL_OBJS=\
 	$(KERNEL)/entry.o \
-	$(KERNEL)/idt.o \
 	$(KERNEL)/isr.o \
-	$(KERNEL)/interrupts.o \
-	$(KERNEL)/syscall.o \
 	$(KERNEL)/context.o \
-	$(KERNEL)/kernel.o \
-	$(KERNEL)/console.o \
-	$(KERNEL)/printf.o \
-	$(KERNEL)/string.o \
-	$(KERNEL)/memory.o \
-	$(KERNEL)/paging.o \
-	$(KERNEL)/heap.o \
-	$(KERNEL)/task.o \
-	$(KERNEL)/timer.o \
-	$(KERNEL)/keyboard.o \
-	$(KERNEL)/mouse.o \
-	$(KERNEL)/ata.o \
-	$(KERNEL)/fs.o \
-	$(KERNEL)/vfs.o \
-	$(KERNEL)/shell.o \
-	$(KERNEL)/gui.o \
-	$(KERNEL)/explorer.o
+	$(KERNEL)/all.o
 
 $(KERNEL)/%.o: kernel/arch/x86_64/%.asm | $(BUILD)
 	$(ASM) -f elf64 $< -o $@
