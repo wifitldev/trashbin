@@ -8,6 +8,10 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -34,5 +38,22 @@ public final class CaseBlock extends Block implements BlockEntityProvider {
                 caseEntity.serverTick();
             }
         };
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
+        }
+
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof CaseBlockEntity caseEntity) {
+            player.sendMessage(Text.literal(
+                    "OCF Case address=" + caseEntity.address() + " openPorts=" + caseEntity.modem().openPorts()
+            ), false);
+            return ActionResult.CONSUME;
+        }
+
+        return ActionResult.PASS;
     }
 }

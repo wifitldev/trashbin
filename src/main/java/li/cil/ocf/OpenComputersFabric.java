@@ -1,5 +1,6 @@
 package li.cil.ocf;
 
+import li.cil.ocf.common.command.OCFCommands;
 import li.cil.ocf.common.registry.OCFBlockEntityTypes;
 import li.cil.ocf.common.registry.OCFBlocks;
 import net.fabricmc.api.ModInitializer;
@@ -14,6 +15,7 @@ public final class OpenComputersFabric implements ModInitializer {
     public void onInitialize() {
         OCFBlocks.bootstrap();
         OCFBlockEntityTypes.bootstrap();
-        LOGGER.info("OpenComputers Fabric bootstrap initialized.");
+        OCFCommands.bootstrap();
+        LOGGER.info("OpenComputers Fabric modem-first MVP initialized.");
     }
 }

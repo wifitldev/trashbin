@@ -1,8 +1,14 @@
 package li.cil.ocf.api.network;
 
+import java.util.Set;
+
 /**
- * Marker contract for component-backed nodes.
+ * Minimal addressable component contract for OC-like component bus semantics.
  */
 public interface Component {
-    String name();
+    String address();
+
+    String type();
+
+    Set<String> methods();
 }
