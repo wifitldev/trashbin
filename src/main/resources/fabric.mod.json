@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "opencomputers-fabric",
+  "version": "${version}",
+  "name": "OpenComputers Fabric",
+  "description": "Bootstrap of an OpenComputers parity port for Fabric 1.21.6.",
+  "authors": ["Porting Team"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "li.cil.ocf.OpenComputersFabric"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.6",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
